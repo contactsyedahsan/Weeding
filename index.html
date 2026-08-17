@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3D0A18">
+<title>Meezab &amp; Dua — Wedding Invitation</title>
+<meta name="description" content="The wedding invitation of Syed Meezab E Rehmat Ali Hyderi &amp; Dua Sarwar. Mehndi 29 August 2026, Rukhsati 1 September 2026, Shalima 3 September 2026.">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Open Graph (used when the QR link is shared in chat apps) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meezab &amp; Dua — Wedding Invitation">
+<meta property="og:description" content="Together with their families, we joyfully invite you to celebrate our wedding.">
+
+<!-- Inline monogram favicon: no extra request, no 404, works offline.
+     Also used when a guest saves the QR link to their home screen. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%235c1226'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23c9a45c' stroke-width='1.4'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='21' fill='%23e7ce9b' text-anchor='middle'%3EM%26amp;D%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%235c1226'/%3E%3Ccircle cx='90' cy='90' r='64' fill='none' stroke='%23c9a45c' stroke-width='3'/%3E%3Ctext x='90' y='111' font-family='Georgia,serif' font-size='58' fill='%23e7ce9b' text-anchor='middle'%3EM%26amp;D%3C/text%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-title" content="Meezab &amp; Dua">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Fonts: Parisienne (script) · Cormorant Garamond (serif) · Montserrat (labels) · Amiri (Arabic only) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&family=Parisienne&display=swap">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/depth.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<script>
+  /* Set motion flag before first paint so reveal states never flash.
+     If GSAP fails to load, main.js removes this class and everything is visible. */
+  (function () {
+    var r = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.add('has-js');
+    if (!r) document.documentElement.classList.add('has-motion');
+    else document.documentElement.classList.add('reduced-motion');
+  })();
+</script>
+</head>
+
+<body class="is-locked">
+
+<!-- ============================================================
+     SVG SYMBOL LIBRARY — every ornament used across the site.
+     Drawn once, referenced with <use>. Colour comes from CSS
+     via currentColor, so one symbol serves every section theme.
+     ============================================================ -->
+<svg class="svg-lib" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <linearGradient id="gSatin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#33070F"/>
+      <stop offset="18%"  stop-color="#5E1224"/>
+      <stop offset="38%"  stop-color="#8B2338"/>
+      <stop offset="50%"  stop-color="#A33F53"/>
+      <stop offset="62%"  stop-color="#75182C"/>
+      <stop offset="84%"  stop-color="#4A0D1C"/>
+      <stop offset="100%" stop-color="#2E0710"/>
+    </linearGradient>
+    <linearGradient id="gSatinChampagne" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#9A7433"/>
+      <stop offset="20%"  stop-color="#C9A45C"/>
+      <stop offset="42%"  stop-color="#F0DCB0"/>
+      <stop offset="54%"  stop-color="#FFF6E2"/>
+      <stop offset="70%"  stop-color="#D6B87A"/>
+      <stop offset="100%" stop-color="#8F6B2E"/>
+    </linearGradient>
+    <linearGradient id="gFoil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#8F6B2E"/>
+      <stop offset="25%"  stop-color="#E7CE9B"/>
+      <stop offset="45%"  stop-color="#FFF6E2"/>
+      <stop offset="62%"  stop-color="#C9A45C"/>
+      <stop offset="100%" stop-color="#9A7433"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Location pin -->
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 22s7-6.1 7-11.6A7 7 0 0 0 5 10.4C5 15.9 12 22 12 22Z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+    <circle cx="12" cy="10.2" r="2.5" fill="none" stroke="currentColor" stroke-width="1.1"/>
+  </symbol>
+
+  <!-- Reticle / target mark used beside venue names -->
+  <symbol id="i-reticle" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5.2" fill="none" stroke="currentColor" stroke-width="1"/>
+    <circle cx="12" cy="12" r="1.4" fill="currentColor"/>
+    <path d="M12 1.6v4M12 18.4v4M1.6 12h4M18.4 12h4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Musical note (audio toggle) -->
+  <symbol id="i-note" viewBox="0 0 24 24">
+    <path d="M9 18V6.4l9-2.1V15.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="6.9" cy="18" rx="2.9" ry="2.4" fill="currentColor"/>
+    <ellipse cx="15.9" cy="15.7" rx="2.9" ry="2.4" fill="currentColor"/>
+  </symbol>
+
+  <!-- Botanical sprig: stem + leaves. Used mirrored / rotated everywhere. -->
+  <symbol id="i-sprig" viewBox="0 0 200 300">
+    <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <path d="M104 298C96 240 90 186 96 132 100 92 112 56 132 22"/>
+      <path d="M100 250c-16-8-26-22-30-40M101 214c16-6 26-18 31-34M102 176c-16-10-24-24-27-42M104 140c16-8 25-20 29-37M108 104c-15-10-22-24-24-41"/>
+    </g>
+    <g fill="currentColor" opacity=".62">
+      <path d="M0 0c11-7 27-5 36 0-9 5-25 7-36 0Z" transform="translate(58 202) rotate(-18)"/>
+      <path d="M0 0c11-7 27-5 36 0-9 5-25 7-36 0Z" transform="translate(96 176) rotate(200) scale(-1 1)"/>
+      <path d="M0 0c11-7 27-5 36 0-9 5-25 7-36 0Z" transform="translate(66 128) rotate(-22)"/>
+      <path d="M0 0c11-7 27-5 36 0-9 5-25 7-36 0Z" transform="translate(100 106) rotate(196) scale(-1 1)"/>
+      <path d="M0 0c9-6 22-4 30 0-8 4-21 6-30 0Z" transform="translate(78 62) rotate(-26)"/>
+      <path d="M0 0c9-6 22-4 30 0-8 4-21 6-30 0Z" transform="translate(112 48) rotate(192) scale(-1 1)"/>
+      <path d="M0 0c8-5 19-4 26 0-7 4-18 5-26 0Z" transform="translate(120 20) rotate(-40)"/>
+    </g>
+    <g fill="currentColor" opacity=".38">
+      <circle cx="132" cy="16" r="4"/><circle cx="88" cy="242" r="3.4"/><circle cx="122" cy="150" r="3"/>
+    </g>
+  </symbol>
+
+  <!-- Five-petal blossom, drawn as line art with a whisper of fill -->
+  <symbol id="i-bloom" viewBox="0 0 100 100">
+    <g fill="currentColor" opacity=".14">
+      <ellipse cx="50" cy="27" rx="11" ry="19"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(72 50 50)"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(144 50 50)"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(216 50 50)"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(288 50 50)"/>
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="1.5" opacity=".9">
+      <ellipse cx="50" cy="27" rx="11" ry="19"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(72 50 50)"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(144 50 50)"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(216 50 50)"/>
+      <ellipse cx="50" cy="27" rx="11" ry="19" transform="rotate(288 50 50)"/>
+    </g>
+    <circle cx="50" cy="50" r="5.4" fill="currentColor" opacity=".85"/>
+  </symbol>
+
+  <!-- Ornamental divider: diamond + rules + leaflets -->
+  <symbol id="i-divider" viewBox="0 0 320 40">
+    <g stroke="currentColor" fill="none" stroke-width="1">
+      <path d="M8 20h96M216 20h96" stroke-linecap="round"/>
+      <path d="M160 8l12 12-12 12-12-12z"/>
+      <path d="M160 2l18 18-18 18-18-18z" opacity=".45"/>
+      <path d="M110 20c8-7 16-9 24-6-6 7-15 9-24 6ZM210 20c-8-7-16-9-24-6 6 7 15 9 24 6Z"/>
+      <path d="M124 20c6 6 13 8 21 6M196 20c-6 6-13 8-21 6"/>
+    </g>
+    <circle cx="160" cy="20" r="2.6" fill="currentColor"/>
+  </symbol>
+
+  <!-- Corner filigree (top-left orientation; flipped by CSS) -->
+  <symbol id="i-corner" viewBox="0 0 180 180">
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+      <path d="M6 6h58M6 6v58"/>
+      <path d="M14 14h34M14 14v34" opacity=".55"/>
+      <path d="M6 74c26 0 44-16 46-42 1-10 8-18 18-19"/>
+      <path d="M28 66c16-4 26-14 30-30"/>
+      <path d="M74 6c0 26-16 44-42 46-10 1-18 8-19 18"/>
+      <path d="M96 12c-6 18-2 30 12 38M12 96c18-6 30-2 38 12"/>
+    </g>
+    <g fill="currentColor" opacity=".6">
+      <path d="M0 0c9-6 22-4 29 0-7 4-20 6-29 0Z" transform="translate(52 74) rotate(28)"/>
+      <path d="M0 0c9-6 22-4 29 0-7 4-20 6-29 0Z" transform="translate(74 52) rotate(62)"/>
+      <circle cx="112" cy="26" r="3"/><circle cx="26" cy="112" r="3"/>
+    </g>
+  </symbol>
+
+  <!-- Pointed Islamic arch frame -->
+  <symbol id="i-arch" viewBox="0 0 300 420" preserveAspectRatio="none">
+    <path d="M10 418V168C10 88 72 22 150 4c78 18 140 84 140 164v250" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <path d="M24 418V170C24 96 80 36 150 20c70 16 126 76 126 150v248" fill="none" stroke="currentColor" stroke-width=".7" opacity=".5"/>
+  </symbol>
+
+  <!-- Satin ribbon band, stretched by CSS -->
+  <symbol id="i-ribbon" viewBox="0 0 1200 260" preserveAspectRatio="none">
+    <path d="M0 108C176 30 322 178 520 108 716 39 842 176 1040 106c76-27 118-19 160-32v72c-42 14-84 6-160 33-198 70-324-66-520 3-198 70-344-78-520 0Z" fill="url(#gSatin)"/>
+    <path d="M0 128C176 50 322 198 520 128c196-69 322 68 520-2 76-27 118-19 160-32v14c-42 13-84 5-160 32-198 70-324-66-520 3-198 70-344-78-520 0Z" fill="#fff" opacity=".16"/>
+    <path d="M0 168C176 90 322 238 520 168c196-69 322 68 520-2 76-27 118-19 160-32v10c-42 13-84 5-160 32-198 70-324-66-520 3-198 70-344-78-520 0Z" fill="#1E0409" opacity=".22"/>
+  </symbol>
+
+  <!-- Champagne ribbon band -->
+  <symbol id="i-ribbon-gold" viewBox="0 0 1200 260" preserveAspectRatio="none">
+    <path d="M0 118C176 40 322 188 520 118 716 49 842 186 1040 116c76-27 118-19 160-32v56c-42 14-84 6-160 33-198 70-324-66-520 3-198 70-344-78-520 0Z" fill="url(#gSatinChampagne)" opacity=".9"/>
+    <path d="M0 134C176 56 322 204 520 134c196-69 322 68 520-2 76-27 118-19 160-32v10c-42 13-84 5-160 32-198 70-324-66-520 3-198 70-344-78-520 0Z" fill="#fff" opacity=".35"/>
+  </symbol>
+
+  <!-- Monogram wreath -->
+  <symbol id="i-wreath" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="82" fill="none" stroke="currentColor" stroke-width=".9" opacity=".85"/>
+    <circle cx="100" cy="100" r="72" fill="none" stroke="currentColor" stroke-width=".5" opacity=".45"/>
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+      <path d="M100 182c-30-6-52-28-58-58M100 182c30-6 52-28 58-58"/>
+    </g>
+    <g fill="currentColor" opacity=".6">
+      <path d="M0 0c8-5 19-4 26 0-7 4-18 5-26 0Z" transform="translate(52 152) rotate(40)"/>
+      <path d="M0 0c8-5 19-4 26 0-7 4-18 5-26 0Z" transform="translate(148 152) rotate(140) scale(-1 1)"/>
+      <path d="M0 0c8-5 19-4 26 0-7 4-18 5-26 0Z" transform="translate(40 128) rotate(20)"/>
+      <path d="M0 0c8-5 19-4 26 0-7 4-18 5-26 0Z" transform="translate(160 128) rotate(160) scale(-1 1)"/>
+    </g>
+    <circle cx="100" cy="18" r="3.4" fill="currentColor"/>
+  </symbol>
+
+  <!-- Qawwali motif: harmonium-inspired arcs + notes -->
+  <symbol id="i-qawwali" viewBox="0 0 200 120">
+    <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+      <path d="M20 96c0-38 36-68 80-68s80 30 80 68" opacity=".8"/>
+      <path d="M40 96c0-28 27-50 60-50s60 22 60 50" opacity=".5"/>
+      <path d="M60 96c0-18 18-32 40-32s40 14 40 32" opacity=".3"/>
+      <path d="M100 96V44M84 52v44M116 52v44"/>
+    </g>
+    <g fill="currentColor" opacity=".8">
+      <circle cx="100" cy="30" r="3.2"/><circle cx="62" cy="42" r="2.4"/><circle cx="138" cy="42" r="2.4"/>
+    </g>
+  </symbol>
+</svg>
+
+
+<!-- ============================================================
+     GRAIN + GLOBAL GOLD DUST (fixed layers)
+     ============================================================ -->
+<div class="grain" aria-hidden="true"></div>
+<canvas id="dust-global" class="dust-layer" aria-hidden="true"></canvas>
+
+
+<!-- ============================================================
+     01 · INTRO — THE ENVELOPE
+     ============================================================ -->
+<div id="intro" class="intro" role="dialog" aria-label="Open the wedding invitation">
+  <canvas class="intro__dust" aria-hidden="true"></canvas>
+  <div class="intro__glow" aria-hidden="true"></div>
+
+  <div class="intro__stage">
+    <div class="envelope" id="envelope">
+
+      <!-- Back panel / inner card that rises -->
+      <div class="envelope__card" aria-hidden="true">
+        <div class="envelope__card-inner">
+          <svg class="card-corner card-corner--tl"><use href="#i-corner"/></svg>
+          <svg class="card-corner card-corner--br"><use href="#i-corner"/></svg>
+          <span class="card-mono">M<em>&amp;</em>D</span>
+        </div>
+      </div>
+
+      <!-- Envelope body -->
+      <div class="envelope__body">
+        <div class="envelope__paper"></div>
+        <div class="envelope__fold envelope__fold--l" aria-hidden="true"></div>
+        <div class="envelope__fold envelope__fold--r" aria-hidden="true"></div>
+        <div class="envelope__fold envelope__fold--b" aria-hidden="true"></div>
+        <div class="envelope__rule" aria-hidden="true"></div>
+      </div>
+
+      <!-- Flap -->
+      <div class="envelope__flap" aria-hidden="true">
+        <div class="envelope__flap-face"></div>
+      </div>
+
+      <!-- Wax seal -->
+      <div class="seal" id="seal" aria-hidden="true">
+        <div class="seal__wax">
+          <span class="seal__mono">M<i>&amp;</i>D</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro__copy">
+      <p class="intro__eyebrow">Bismillāhir Raḥmānir Raḥīm</p>
+      <!-- Not an <h1>: the couple's names in the hero are the page's
+           single top-level heading. This is the cover of the envelope. -->
+      <p class="intro__title">The Wedding Invitation</p>
+      <p class="intro__names">Meezab <span class="amp">&amp;</span> Dua</p>
+      <svg class="ornament ornament--divider intro__div"><use href="#i-divider"/></svg>
+
+      <button type="button" class="btn-open" id="btn-open">
+        <span class="btn-open__frame" aria-hidden="true"></span>
+        <span class="btn-open__label">Open Invitation</span>
+      </button>
+      <p class="intro__hint">Best experienced with sound</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cinematic sweep used for the open sequence and section transitions -->
+<div class="sweep" id="sweep" aria-hidden="true">
+  <div class="sweep__panel"></div>
+  <svg class="sweep__ribbon"><use href="#i-ribbon"/></svg>
+</div>
+
+
+<!-- ============================================================
+     FLOATING UI — event nav + audio
+     ============================================================ -->
+<nav class="evnav" id="evnav" aria-label="Jump to an event">
+  <span class="evnav__pill" aria-hidden="true"></span>
+  <a class="evnav__link" href="#mehndi" data-nav="mehndi">Mehndi</a>
+  <a class="evnav__link" href="#rukhsati" data-nav="rukhsati">Rukhsati</a>
+  <a class="evnav__link" href="#shalima" data-nav="shalima">Shalima</a>
+</nav>
+
+<button type="button" class="audio-btn" id="audio-btn" hidden aria-pressed="false" aria-label="Play ambient music">
+  <svg aria-hidden="true"><use href="#i-note"/></svg>
+  <span class="audio-btn__ring" aria-hidden="true"></span>
+</button>
+
+
+<!-- ============================================================
+     MAIN INVITATION
+     ============================================================ -->
+<main id="site" class="site" tabindex="-1">
+
+  <!-- ---------- 02 · HERO ---------- -->
+  <header class="hero" id="hero">
+    <div class="hero__decor" aria-hidden="true">
+      <svg class="ornament arch" data-parallax="0.05"><use href="#i-arch"/></svg>
+      <svg class="ornament sprig sprig--hero-l" data-parallax="0.16"><use href="#i-sprig"/></svg>
+      <svg class="ornament sprig sprig--hero-r" data-parallax="0.16"><use href="#i-sprig"/></svg>
+      <svg class="ornament bloom bloom--hero-1 float-slow" data-parallax="0.5"><use href="#i-bloom"/></svg>
+      <svg class="ornament bloom bloom--hero-2 float-slower" data-parallax="0.42"><use href="#i-bloom"/></svg>
+      <svg class="ribbon ribbon--hero" data-parallax="0.26"><use href="#i-ribbon"/></svg>
+      <div class="asset-layer" data-asset-layer="hero"></div>
+    </div>
+
+    <div class="hero__inner shell">
+      <p class="bismillah" data-reveal="fade" lang="ar" dir="rtl">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْم</p>
+      <p class="bismillah__latin" data-reveal="up">In the name of Allah, the Most Gracious, the Most Merciful</p>
+
+      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
+
+      <p class="hero__lead label" data-reveal="up">Together with their families</p>
+
+      <h1 class="couple">
+        <span class="couple__name foil" data-reveal="mask" id="name-groom">Syed Meezab E Rehmat Ali Hyderi</span>
+        <span class="couple__meta" data-reveal="up">S/O Syed Mazher Ali Hyderi</span>
+        <span class="couple__amp" data-reveal="scale" aria-hidden="true">&amp;</span>
+        <span class="sr-only">and</span>
+        <span class="couple__name foil" data-reveal="mask" id="name-bride">Dua Sarwar</span>
+        <span class="couple__meta" data-reveal="up">D/O Late Ghulam Sarwar</span>
+      </h1>
+
+      <p class="hero__invite" data-reveal="up">joyfully invite you to celebrate their wedding</p>
+
+      <div class="hero__dates" data-reveal="up">
+        <span>29 Aug</span><i aria-hidden="true"></i>
+        <span>01 Sep</span><i aria-hidden="true"></i>
+        <span>03 Sep</span>
+        <em>2026</em>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span class="scroll-cue__line"></span>
+      <span class="scroll-cue__text">Scroll</span>
+    </div>
+  </header>
+
+
+  <!-- ---------- 03 · CELEBRATIONS OVERTURE ---------- -->
+  <section class="overture" id="celebrations" aria-labelledby="overture-title">
+    <div class="overture__decor" aria-hidden="true">
+      <svg class="ribbon ribbon--overture" data-parallax="0.3"><use href="#i-ribbon-gold"/></svg>
+      <svg class="ornament sprig sprig--ov-l" data-parallax="0.14"><use href="#i-sprig"/></svg>
+      <div class="asset-layer" data-asset-layer="celebrations"></div>
+    </div>
+    <div class="shell overture__inner">
+      <p class="label" data-reveal="up">Three evenings, one story</p>
+      <h2 class="section-title foil" id="overture-title" data-reveal="mask">The Celebrations</h2>
+      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
+      <p class="overture__note" data-reveal="up">
+        We invite you to share in three evenings of music, prayer and joy —
+        a mehndi lit by qawwali, a rukhsati held close by family, and a night of elegance to close.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ---------- 04 · EVENT PANELS (rendered from js/config.js) ---------- -->
+  <div id="events-root"></div>
+
+
+  <!-- ---------- 05 · COUNTDOWN ---------- -->
+  <section class="countdown" id="countdown" aria-labelledby="countdown-title">
+    <div class="countdown__decor" aria-hidden="true">
+      <svg class="ornament corner corner--tl" data-parallax="0.08"><use href="#i-corner"/></svg>
+      <svg class="ornament corner corner--br" data-parallax="0.08"><use href="#i-corner"/></svg>
+      <svg class="ornament bloom bloom--cd float-slow" data-parallax="0.45"><use href="#i-bloom"/></svg>
+      <div class="asset-layer" data-asset-layer="countdown"></div>
+    </div>
+    <div class="shell">
+      <p class="label" data-reveal="up">The wait</p>
+      <h2 class="section-title foil" id="countdown-title" data-reveal="mask">Counting Down to Our Celebration</h2>
+      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
+
+      <div class="clock" id="clock" data-reveal="up" role="timer" aria-live="off">
+        <div class="clock__unit"><span class="clock__num" data-cd="days">—</span><span class="clock__lbl">Days</span></div>
+        <span class="clock__sep" aria-hidden="true"></span>
+        <div class="clock__unit"><span class="clock__num" data-cd="hours">—</span><span class="clock__lbl">Hours</span></div>
+        <span class="clock__sep" aria-hidden="true"></span>
+        <div class="clock__unit"><span class="clock__num" data-cd="minutes">—</span><span class="clock__lbl">Minutes</span></div>
+        <span class="clock__sep" aria-hidden="true"></span>
+        <div class="clock__unit"><span class="clock__num" data-cd="seconds">—</span><span class="clock__lbl">Seconds</span></div>
+      </div>
+      <p class="clock__done" id="clock-done" hidden>The celebrations have begun.</p>
+      <p class="clock__target" id="clock-target" data-reveal="fade"></p>
+    </div>
+  </section>
+
+
+  <!-- ---------- 06 · TIMELINE ---------- -->
+  <section class="timeline" id="timeline" aria-labelledby="timeline-title">
+    <div class="shell">
+      <p class="label" data-reveal="up">In order</p>
+      <h2 class="section-title foil" id="timeline-title" data-reveal="mask">The Order of Days</h2>
+      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
+      <ol class="tl" id="tl-root"></ol>
+    </div>
+  </section>
+
+
+  <!-- ---------- 07 · VENUES ---------- -->
+  <section class="venues" id="venues" aria-labelledby="venues-title">
+    <div class="venues__decor" aria-hidden="true">
+      <svg class="ribbon ribbon--venues" data-parallax="0.24"><use href="#i-ribbon-gold"/></svg>
+      <div class="asset-layer" data-asset-layer="venues"></div>
+    </div>
+    <div class="shell">
+      <p class="label" data-reveal="up">Directions</p>
+      <h2 class="section-title foil" id="venues-title" data-reveal="mask">Where to Join Us</h2>
+      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
+      <div class="venues__grid" id="venues-root"></div>
+    </div>
+  </section>
+
+
+  <!-- ---------- 08 · CLOSING ---------- -->
+  <section class="closing" id="closing" aria-labelledby="closing-title">
+    <div class="closing__decor" aria-hidden="true">
+      <svg class="ornament sprig sprig--cl-l" data-parallax="0.15"><use href="#i-sprig"/></svg>
+      <svg class="ornament sprig sprig--cl-r" data-parallax="0.15"><use href="#i-sprig"/></svg>
+      <div class="asset-layer" data-asset-layer="closing"></div>
+    </div>
+    <div class="shell closing__inner">
+      <svg class="ornament bloom bloom--closing" data-reveal="scale" aria-hidden="true"><use href="#i-bloom"/></svg>
+      <h2 class="closing__line" id="closing-title" data-reveal="mask">
+        We would be honored to celebrate these beautiful moments with you.
+      </h2>
+      <p class="closing__sign label" data-reveal="up">With love</p>
+      <p class="closing__couple" data-reveal="up">Syed Meezab E Rehmat Ali Hyderi <span class="amp">&amp;</span> Dua Sarwar</p>
+
+      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
+
+      <p class="label save-label" data-reveal="up">Save the Dates</p>
+      <ul class="save-dates" id="save-dates"></ul>
+    </div>
+  </section>
+
+
+  <!-- ---------- 09 · FINAL FRAME ---------- -->
+  <section class="finale" id="finale" aria-labelledby="finale-title">
+    <canvas class="finale__dust" aria-hidden="true"></canvas>
+    <div class="finale__decor" aria-hidden="true">
+      <svg class="ribbon ribbon--finale" data-parallax="0.2"><use href="#i-ribbon"/></svg>
+      <div class="asset-layer" data-asset-layer="finale"></div>
+    </div>
+
+    <div class="finale__frame">
+      <svg class="ornament corner corner--tl" aria-hidden="true"><use href="#i-corner"/></svg>
+      <svg class="ornament corner corner--tr" aria-hidden="true"><use href="#i-corner"/></svg>
+      <svg class="ornament corner corner--bl" aria-hidden="true"><use href="#i-corner"/></svg>
+      <svg class="ornament corner corner--br" aria-hidden="true"><use href="#i-corner"/></svg>
+
+      <div class="finale__inner">
+        <p class="finale__thanks label" data-reveal="up">Thank you for being part of our celebration</p>
+        <h2 class="finale__names foil foil--bright" id="finale-title" data-reveal="mask">Meezab <span class="amp">&amp;</span> Dua</h2>
+        <div class="finale__dates" data-reveal="up">
+          <span>29 August 2026</span><span>1 September 2026</span><span>3 September 2026</span>
+        </div>
+        <div class="finale__seal" data-reveal="scale">
+          <svg class="ornament wreath" aria-hidden="true"><use href="#i-wreath"/></svg>
+          <span class="finale__mono">M<i>&amp;</i>D</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="credit">
+      <p>Made with love · 2026</p>
+    </footer>
+  </section>
+
+</main>
+
+
+<!-- ============================================================
+     SCRIPTS — plain globals (no ES modules) so index.html also
+     works when opened directly from the file system.
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
+<script src="js/config.js" defer></script>
+<script src="js/assets.js" defer></script>
+<script src="js/events.js" defer></script>
+<script src="js/countdown.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/main.js" defer></script>
+
+</body>
+</html>

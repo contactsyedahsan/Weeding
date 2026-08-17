@@ -1,0 +1,391 @@
+/* =============================================================
+   depth.css — THE 3D / RELIEF LAYER
+   -------------------------------------------------------------
+   Every surface, ornament and control on the page gets physical
+   depth here: raised gold-foil type, bevelled buttons that press
+   in when tapped, layered paper panels, engraved frames and
+   dimensional ornaments.
+
+   The vocabulary is real luxury stationery — foil stamping sits
+   PROUD of the paper (highlight on the top edge, shadow beneath),
+   rules and frames are DEBOSSED into it (the opposite). That is
+   what makes it read as expensive rather than as a drop-shadow.
+
+   Loaded after style.css and before responsive.css, and it only
+   ever sets shadow / filter / gradient / 3D properties, so it
+   never fights the layout or the parallax transforms.
+   ============================================================= */
+
+:root{
+  /* ---- lift on a light (ivory) ground ---- */
+  --lift-1:0 1px 1px rgba(74,42,18,.10), 0 3px 6px -2px rgba(74,42,18,.16);
+  --lift-2:0 1px 1px rgba(74,42,18,.10), 0 6px 14px -4px rgba(74,42,18,.20),
+           0 16px 32px -14px rgba(74,42,18,.22);
+  --lift-3:0 2px 2px rgba(74,42,18,.10), 0 12px 24px -8px rgba(74,42,18,.22),
+           0 34px 64px -28px rgba(74,42,18,.32);
+  --bevel:inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(120,88,40,.24);
+  --press:inset 0 2px 5px rgba(74,42,18,.26), inset 0 -1px 0 rgba(255,255,255,.55);
+  --groove:inset 0 1px 0 rgba(120,88,40,.20), inset 0 -1px 0 rgba(255,255,255,.75);
+
+  /* ---- lift on a dark (burgundy) ground ---- */
+  --lift-d1:0 1px 2px rgba(0,0,0,.38), 0 5px 12px -4px rgba(0,0,0,.48);
+  --lift-d2:0 2px 4px rgba(0,0,0,.42), 0 12px 26px -8px rgba(0,0,0,.55),
+            0 30px 56px -24px rgba(0,0,0,.55);
+  --bevel-d:inset 0 1px 0 rgba(255,236,196,.32), inset 0 -1px 0 rgba(0,0,0,.55);
+  --press-d:inset 0 3px 7px rgba(0,0,0,.6), inset 0 -1px 0 rgba(255,236,196,.2);
+  --groove-d:inset 0 1px 0 rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,236,196,.22);
+
+  /* ---- raised gold foil (filters: they follow the glyph alpha,
+          so they work on background-clip:text headings) ---- */
+  --foil-relief:
+      drop-shadow(0 -1px 0 rgba(255,253,244,.9))
+      drop-shadow(0 1px 0 rgba(108,74,26,.55))
+      drop-shadow(0 4px 7px rgba(74,42,18,.28));
+  --foil-relief-d:
+      drop-shadow(0 -1px 0 rgba(255,240,205,.4))
+      drop-shadow(0 1px 0 rgba(0,0,0,.65))
+      drop-shadow(0 5px 12px rgba(0,0,0,.5));
+
+  /* ---- engraved hairline ornaments ---- */
+  --line-relief:drop-shadow(0 1px 0 rgba(255,253,246,.8)) drop-shadow(0 -1px 0 rgba(120,88,40,.3));
+  --line-relief-d:drop-shadow(0 1px 0 rgba(0,0,0,.6)) drop-shadow(0 -1px 0 rgba(255,240,205,.22));
+}
+
+
+/* =============================================================
+   1 · TYPE — raised foil stamping
+   ============================================================= */
+.foil{filter:var(--foil-relief)}
+.event--shalima .event__title,
+.finale__names,
+.intro__names,
+.btn-open__label{filter:var(--foil-relief-d)}
+
+/* Script names carry the most relief — they are the foil block */
+.couple__name{filter:var(--foil-relief) drop-shadow(0 10px 16px rgba(74,42,18,.16))}
+
+/* Solid-ink type gets letterpress relief instead of a filter (cheaper) */
+.clock__num{
+  text-shadow:
+    0 -1px 0 rgba(255,255,255,.9),
+    0 1px 0 rgba(92,18,38,.35),
+    0 5px 10px rgba(74,42,18,.20);
+}
+.event__date,
+.venue-card__name,
+.tl__title,
+.save-dates b{
+  text-shadow:0 -1px 0 rgba(255,255,255,.7), 0 1px 1px rgba(74,42,18,.22);
+}
+.event--mehndi .event__date,
+.event--shalima .event__date,
+.event--mehndi .event__venue-name,
+.event--shalima .event__venue-name{
+  text-shadow:0 -1px 0 rgba(255,240,205,.22), 0 2px 4px rgba(0,0,0,.55);
+}
+.event--rukhsati .event__title{
+  text-shadow:0 -1px 0 rgba(255,255,255,.8), 0 2px 2px rgba(92,18,38,.22),
+              0 8px 16px rgba(74,42,18,.16);
+}
+.bismillah{
+  text-shadow:0 -1px 0 rgba(255,255,255,.7), 0 2px 3px rgba(92,18,38,.22);
+}
+.closing__line,
+.closing__couple{
+  text-shadow:0 -1px 0 rgba(255,255,255,.65), 0 1px 2px rgba(74,42,18,.18);
+}
+.finale__thanks,
+.finale__dates,
+.credit p{text-shadow:0 1px 2px rgba(0,0,0,.5)}
+
+
+/* =============================================================
+   2 · ORNAMENTS — dimensional gold
+   ============================================================= */
+.ornament--divider,
+.event__rule,
+.event__motif,
+.event__pin,
+.venue-card__pin,
+.bloom--closing{filter:var(--line-relief)}
+
+.event--mehndi .event__rule,
+.event--mehndi .event__motif,
+.event--mehndi .event__pin,
+.event--shalima .event__rule,
+.event--shalima .event__motif,
+.event--shalima .event__pin,
+.finale__seal .wreath{filter:var(--line-relief-d)}
+
+/* Ribbons cast a shadow so they read as fabric lying ON the paper.
+   Desktop only: these elements parallax every frame, and a filter on
+   top of that is the one combination that costs real frames on a phone. */
+@media (min-width:768px) and (hover:hover){
+  .ribbon{filter:drop-shadow(0 8px 12px rgba(58,26,12,.30))}
+  .event--mehndi .ribbon,.event--shalima .ribbon,.finale .ribbon{
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,.45));
+  }
+}
+
+/* Frame corner filigree sits proud of the frame */
+.event__frame .corner{filter:var(--line-relief)}
+.event--mehndi .event__frame .corner,
+.event--shalima .event__frame .corner,
+.finale__frame .corner{filter:var(--line-relief-d)}
+
+
+/* =============================================================
+   3 · SURFACES — layered paper
+   ============================================================= */
+
+/* Event panel: a card resting on the section, with a second sheet
+   showing along its bottom edge.
+
+   The sheet sits BELOW the panel (top:100%) rather than behind it. A
+   negative z-index child would not work: inside a stacking context —
+   and .event__panel makes one, via position + z-index:4 — negative
+   children paint *above* the element's own background, so it veiled
+   the panel instead of backing it. */
+.event__panel{
+  box-shadow:var(--lift-3);
+  border-radius:1px;
+}
+.event__panel::before{
+  content:'';position:absolute;
+  left:9px;right:9px;top:100%;height:13px;margin-top:-3px;
+  background:linear-gradient(180deg,rgba(252,246,235,.95),rgba(223,206,177,.85));
+  box-shadow:var(--lift-1);
+  border-radius:0 0 2px 2px;
+}
+.event--rukhsati .event__panel{
+  background:linear-gradient(180deg,rgba(255,253,248,.92),rgba(246,236,220,.72));
+  box-shadow:var(--bevel),var(--lift-3);
+}
+.event--mehndi .event__panel,
+.event--shalima .event__panel{
+  box-shadow:var(--bevel-d),var(--lift-d2);
+}
+.event--mehndi .event__panel{
+  background:linear-gradient(180deg,rgba(255,236,200,.055),rgba(0,0,0,.16));
+}
+/* keeps the champagne inner glow that makes Shalima the grand finale */
+.event--shalima .event__panel{
+  background:linear-gradient(180deg,rgba(231,206,155,.09),rgba(0,0,0,.14));
+  box-shadow:var(--bevel-d),0 0 90px -30px rgba(231,206,155,.45) inset,var(--lift-d2);
+}
+.event--mehndi .event__panel::before,
+.event--shalima .event__panel::before{
+  background:linear-gradient(180deg,rgba(120,86,44,.55),rgba(0,0,0,.55));
+  box-shadow:var(--lift-d1);
+}
+
+/* Frames read as debossed into the sheet */
+.event__frame{box-shadow:var(--groove)}
+.event--mehndi .event__frame,
+.event--shalima .event__frame{box-shadow:var(--groove-d)}
+.finale__frame{box-shadow:var(--groove-d),var(--lift-d2)}
+
+/* Venue cards: raised tiles with a glazed top edge */
+.venues__grid{perspective:1400px}
+.venue-card{
+  transform-style:preserve-3d;
+  box-shadow:var(--bevel),var(--lift-2);
+  border-radius:1px;
+}
+/* Glaze on the top edge. It has to be pinned below the card's content —
+   a pseudo-element comes last in tree order, so without the z-index it
+   laid a white veil over the venue name and the button. */
+.venue-card::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 42%);
+  border-radius:1px;
+}
+.venue-card > *{position:relative;z-index:1}
+.venue-card::before{z-index:2}
+.venue-card:hover{box-shadow:var(--bevel),var(--lift-3)}
+
+/* Timeline: the rail is engraved (a highlight down its right side reads
+   as a groove cut into the paper), the nodes are raised beads */
+.tl::before{box-shadow:1px 0 0 rgba(255,255,255,.75)}
+.tl__node{
+  background:linear-gradient(180deg,#fffaf0,#eaddc4);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -2px 3px rgba(120,88,40,.20),
+    var(--lift-1);
+}
+.tl__item.is-on .tl__node{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -2px 3px rgba(120,88,40,.20),
+    0 0 0 5px rgba(201,164,92,.13),
+    0 0 22px rgba(201,164,92,.5),
+    var(--lift-2);
+}
+.tl__node::after{box-shadow:0 1px 0 rgba(255,255,255,.7)}
+
+/* Countdown separators become engraved rules */
+.clock__sep{box-shadow:1px 0 0 rgba(255,255,255,.7)}
+
+/* Finale frame lifts off the burgundy */
+.finale__frame{border-radius:1px}
+.finale__seal{filter:drop-shadow(0 8px 18px rgba(0,0,0,.5))}
+
+
+/* =============================================================
+   4 · THE ENVELOPE — the most physical object on the page
+   ============================================================= */
+.envelope__body{
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.5) inset,
+    0 -3px 8px rgba(120,88,40,.18) inset,
+    0 0 0 1px rgba(150,112,47,.55),
+    0 10px 20px -6px rgba(0,0,0,.45),
+    0 34px 70px -18px rgba(0,0,0,.6);
+}
+.envelope__flap-face{
+  box-shadow:
+    0 1px 0 rgba(150,112,47,.5) inset,
+    0 6px 14px -6px rgba(0,0,0,.45);
+}
+.envelope__card{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 -8px 26px rgba(0,0,0,.4),
+    0 2px 0 rgba(150,112,47,.25);
+}
+.envelope__rule{box-shadow:var(--groove)}
+
+/* Wax seal: a thick blob with a real cast shadow */
+.seal{filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))}
+.seal__wax{
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,.30),
+    inset 0 -6px 12px rgba(0,0,0,.5),
+    inset 0 0 0 1px rgba(0,0,0,.2),
+    0 4px 6px rgba(0,0,0,.4);
+}
+/* Wax is semi-matte, so the highlight is broad and weak — a tight, bright
+   one would turn the seal into a glossy plastic button. */
+.seal__wax::after{
+  content:'';position:absolute;left:14%;top:10%;width:46%;height:32%;
+  border-radius:50%;
+  background:radial-gradient(circle at 42% 42%, rgba(255,236,220,.26), rgba(255,236,220,0) 72%);
+  pointer-events:none;
+}
+.card-mono,.seal__mono,.finale__mono{
+  text-shadow:0 -1px 0 rgba(255,255,255,.25), 0 2px 3px rgba(0,0,0,.55);
+}
+
+
+/* =============================================================
+   5 · CONTROLS — bevelled, and they press in
+   ============================================================= */
+
+/* --- VIEW LOCATION --- */
+.btn-loc{
+  border-radius:2px;
+  background:linear-gradient(180deg,rgba(255,253,247,.92),rgba(238,226,206,.78));
+  box-shadow:var(--bevel),var(--lift-2);
+  transform-style:preserve-3d;
+}
+.btn-loc span{text-shadow:0 -1px 0 rgba(255,255,255,.7), 0 1px 1px rgba(74,42,18,.2)}
+.btn-loc svg{filter:var(--line-relief)}
+.btn-loc:hover,.btn-loc:focus-visible{
+  box-shadow:var(--bevel),var(--lift-3),0 0 0 4px rgba(201,164,92,.1);
+}
+.btn-loc:active{
+  box-shadow:var(--press);
+  background:linear-gradient(180deg,rgba(232,218,196,.9),rgba(246,238,224,.85));
+}
+.event--mehndi .btn-loc,
+.event--shalima .btn-loc{
+  background:linear-gradient(180deg,rgba(255,238,202,.13),rgba(0,0,0,.24));
+  box-shadow:var(--bevel-d),var(--lift-d2);
+}
+.event--mehndi .btn-loc span,
+.event--shalima .btn-loc span{
+  text-shadow:0 -1px 0 rgba(255,240,205,.2), 0 2px 3px rgba(0,0,0,.6);
+}
+.event--mehndi .btn-loc svg,
+.event--shalima .btn-loc svg{filter:var(--line-relief-d)}
+.event--mehndi .btn-loc:hover,.event--mehndi .btn-loc:focus-visible,
+.event--shalima .btn-loc:hover,.event--shalima .btn-loc:focus-visible{
+  box-shadow:var(--bevel-d),var(--lift-d2),0 0 0 4px rgba(231,206,155,.14);
+}
+.event--mehndi .btn-loc:active,
+.event--shalima .btn-loc:active{box-shadow:var(--press-d)}
+
+/* --- OPEN INVITATION --- */
+.btn-open{
+  border-radius:2px;
+  background:linear-gradient(180deg,rgba(255,238,202,.16),rgba(0,0,0,.22));
+  box-shadow:
+    var(--bevel-d),
+    0 0 0 4px rgba(201,164,92,.09),
+    0 6px 12px -4px rgba(0,0,0,.5),
+    0 22px 44px -14px rgba(0,0,0,.6);
+  transform-style:preserve-3d;
+}
+.btn-open__frame{box-shadow:var(--groove-d)}
+.btn-open:hover,.btn-open:focus-visible{
+  box-shadow:
+    var(--bevel-d),
+    0 0 0 5px rgba(201,164,92,.15),
+    0 10px 20px -5px rgba(0,0,0,.55),
+    0 30px 58px -16px rgba(0,0,0,.65);
+}
+.btn-open:active{box-shadow:var(--press-d),0 0 0 4px rgba(201,164,92,.1)}
+
+/* --- floating nav + audio --- */
+.evnav{
+  box-shadow:var(--bevel),0 2px 3px rgba(42,7,16,.12),0 14px 30px -10px rgba(42,7,16,.30);
+}
+.evnav__pill{
+  background:linear-gradient(180deg,rgba(214,180,110,.34),rgba(150,112,47,.20));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.7),
+    inset 0 -2px 3px rgba(120,88,40,.28),
+    0 1px 2px rgba(74,42,18,.18);
+}
+.evnav__link.is-active{text-shadow:0 -1px 0 rgba(255,255,255,.8), 0 1px 1px rgba(74,42,18,.25)}
+.evnav__link:active{transform:translateY(1px)}
+
+.audio-btn{
+  background:linear-gradient(180deg,rgba(255,252,245,.95),rgba(236,224,203,.85));
+  box-shadow:var(--bevel),0 2px 3px rgba(42,7,16,.14),0 12px 24px -8px rgba(42,7,16,.28);
+}
+.audio-btn:active{box-shadow:var(--press)}
+.audio-btn svg{filter:var(--line-relief)}
+
+
+/* =============================================================
+   6 · PERFORMANCE TRIMS
+   -------------------------------------------------------------
+   Chained drop-shadow filters are the expensive part. On phones
+   the relief is kept but cut to a single pass, and the large
+   parallaxing background art drops its filter entirely — it is
+   behind the content and nobody reads depth from it.
+   ============================================================= */
+@media (max-width:767px){
+  :root{
+    --foil-relief:drop-shadow(0 1px 0 rgba(108,74,26,.5)) drop-shadow(0 3px 5px rgba(74,42,18,.26));
+    --foil-relief-d:drop-shadow(0 1px 0 rgba(0,0,0,.6)) drop-shadow(0 4px 8px rgba(0,0,0,.45));
+    --line-relief:drop-shadow(0 1px 0 rgba(120,88,40,.28));
+    --line-relief-d:drop-shadow(0 1px 1px rgba(0,0,0,.5));
+    --lift-3:0 2px 2px rgba(74,42,18,.10), 0 12px 24px -10px rgba(74,42,18,.26);
+    --lift-d2:0 2px 4px rgba(0,0,0,.42), 0 14px 28px -12px rgba(0,0,0,.55);
+  }
+  .couple__name{filter:var(--foil-relief)}
+  .sprig,.ribbon,.arch,.bloom{filter:none}
+  /* only the inset and thickness change — never top/bottom, or the
+     sheet jumps back inside the panel and lies across the content */
+  .event__panel::before{left:7px;right:7px;height:10px;margin-top:-2px}
+}
+
+/* Depth is decoration: if motion is reduced, keep the relief but drop
+   the costly multi-pass filters so nothing stutters. */
+@media (prefers-reduced-motion:reduce){
+  .foil,.couple__name,.event__motif,.event__rule,
+  .ornament--divider,.event__pin,.venue-card__pin{filter:none}
+}

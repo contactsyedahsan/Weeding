@@ -1,0 +1,114 @@
+/* =============================================================
+   animations.css — keyframes, pre-animation states, motion policy
+   -------------------------------------------------------------
+   Reveal states are scoped to html.has-motion. If JavaScript or
+   GSAP never arrives, or the visitor prefers reduced motion, the
+   invitation renders fully visible and readable.
+   ============================================================= */
+
+/* ---------- 1 · PRE-ANIMATION STATES ----------------------- */
+.has-motion [data-reveal]{will-change:transform,opacity}
+.has-motion [data-reveal="fade"]{opacity:0}
+.has-motion [data-reveal="up"]{opacity:0;transform:translate3d(0,26px,0)}
+.has-motion [data-reveal="scale"]{opacity:0;transform:scale(.86)}
+.has-motion [data-reveal="mask"]{opacity:0}
+.has-motion .mask-line{display:block;overflow:hidden;padding-bottom:.06em}
+.has-motion .mask-inner{display:block;will-change:transform}
+
+/* GSAP clears will-change once a reveal has run */
+.has-motion .is-revealed-el{will-change:auto}
+
+/* Ornaments enter with their sections rather than on load */
+.has-motion .event__panel,
+.has-motion .venue-card,
+.has-motion .tl__item{will-change:transform,opacity}
+
+/* ---------- 2 · AMBIENT KEYFRAMES -------------------------- */
+@keyframes floatSlow{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%    {transform:translate3d(0,-14px,0) rotate(2.2deg)}
+}
+@keyframes floatSlower{
+  0%,100%{transform:translate3d(0,0,0) rotate(-1.5deg)}
+  50%    {transform:translate3d(0,-9px,0) rotate(1.5deg)}
+}
+.float-slow{animation:floatSlow 9s var(--e-soft) infinite}
+.float-slower{animation:floatSlower 13s var(--e-soft) infinite}
+
+@keyframes btnSheen{
+  0%,62%{left:-60%}
+  92%,100%{left:130%}
+}
+@keyframes ringPulse{
+  0%  {transform:scale(1);opacity:.65}
+  70% {transform:scale(1.32);opacity:0}
+  100%{transform:scale(1.32);opacity:0}
+}
+@keyframes cueDrop{
+  0%  {top:-100%}
+  60% {top:100%}
+  100%{top:100%}
+}
+@keyframes sealBreathe{
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%    {transform:translate(-50%,-50%) scale(1.028)}
+}
+.intro .seal{animation:sealBreathe 4.4s var(--e-soft) infinite}
+
+/* ---------- 3 · GOLD FOIL SHIMMER -------------------------- */
+@keyframes foilTravel{
+  0%  {background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+.has-motion .foil.is-shimmering{
+  animation:foilTravel 5.5s var(--e-soft) infinite alternate;
+}
+
+/* ---------- 4 · TIMELINE NODE GLOW ------------------------- */
+@keyframes nodeGlow{
+  0%  {box-shadow:0 0 0 0 rgba(201,164,92,.5)}
+  100%{box-shadow:0 0 0 12px rgba(201,164,92,0)}
+}
+.tl__item.is-on .tl__node::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  animation:nodeGlow 2.4s var(--e-soft) 1;
+}
+
+/* ---------- 5 · DESKTOP CURSOR GLOW ------------------------ */
+.cursor-glow{
+  position:fixed;left:0;top:0;z-index:90;
+  width:22rem;height:22rem;margin:-11rem 0 0 -11rem;
+  border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(circle, rgba(231,206,155,.16), rgba(231,206,155,0) 62%);
+  mix-blend-mode:screen;
+  will-change:transform;
+}
+@media (hover:none),(pointer:coarse){
+  .cursor-glow{display:none!important}
+}
+
+/* ---------- 6 · 3D ASSET DEFAULTS -------------------------- */
+.asset-3d{opacity:0}
+.has-motion .asset-3d[data-anim="none"]{opacity:1}
+html:not(.has-motion) .asset-3d{opacity:1!important;transform:none!important}
+
+/* ---------- 7 · REDUCED MOTION / NO-JS FALLBACK ------------ */
+html:not(.has-motion) [data-reveal]{opacity:1!important;transform:none!important}
+html:not(.has-motion) .float-slow,
+html:not(.has-motion) .float-slower,
+html:not(.has-motion) .intro .seal,
+html:not(.has-motion) .btn-open::after,
+html:not(.has-motion) .scroll-cue__line::after{animation:none!important}
+html:not(.has-motion) .sweep{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+  [data-reveal]{opacity:1!important;transform:none!important}
+  .dust-layer,.intro__dust,.finale__dust,.event__dust{display:none}
+  .cursor-glow{display:none}
+}
