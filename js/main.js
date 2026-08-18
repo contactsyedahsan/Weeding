@@ -81,7 +81,7 @@
     audio.preload = 'auto';
     audio.volume = 0;
 
-    var target = cfg.volume != null ? cfg.volume : 0.32;
+    var target = cfg.volume != null ? cfg.volume : 1.0;
     var failed = false, playing = false, fade = null;
 
     audio.addEventListener('error', function () {
