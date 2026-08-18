@@ -381,7 +381,7 @@ body::before{
    different design. */
 .screen__scrim--locations{
   background:
-    linear-gradient(180deg, rgba(247,241,230,.90), rgba(240,229,212,.93)),
+    linear-gradient(180deg, rgba(247,241,230,.70), rgba(240,229,212,.73)),
     radial-gradient(80% 50% at 50% 0%, rgba(255,250,241,.6), rgba(255,250,241,0) 70%);
 }
 
