@@ -76,7 +76,17 @@
     var btn = document.getElementById('audio-btn');
     if (!cfg.src) return;                  // no file → no player
 
-    var audio = new Audio(cfg.src);
+    var audio = document.getElementById('bg-music');
+    if (!audio) {
+      audio = document.createElement('audio');
+      audio.id = 'bg-music';
+      audio.style.display = 'none';
+      document.body.appendChild(audio);
+    }
+    if (audio.getAttribute('src') !== cfg.src) {
+      audio.src = cfg.src;
+    }
+
     audio.loop = cfg.loop !== false;
     audio.preload = 'auto';
 
@@ -163,11 +173,18 @@
       var arm = function () {
         document.removeEventListener('pointerdown', arm);
         document.removeEventListener('touchstart', arm);
+        document.removeEventListener('touchend', arm);
+        document.removeEventListener('click', arm);
         document.removeEventListener('keydown', arm);
+        try {
+          audio.load();
+        } catch (err) {}
         start();
       };
       document.addEventListener('pointerdown', arm, { once: true });
-      document.addEventListener('touchstart', arm, { once: true, passive: true });
+      document.addEventListener('touchstart', arm, { once: true });
+      document.addEventListener('touchend', arm, { once: true });
+      document.addEventListener('click', arm, { once: true });
       document.addEventListener('keydown', arm, { once: true });
     });
   }
