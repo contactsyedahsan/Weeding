@@ -74,7 +74,7 @@
   function initAudio() {
     var cfg = WI.audio || {};
     var btn = document.getElementById('audio-btn');
-    if (!btn || !cfg.src) return;          // no file → no player, no broken UI
+    if (!cfg.src) return;                  // no file → no player
 
     var audio = new Audio(cfg.src);
     audio.loop = cfg.loop !== false;
@@ -86,7 +86,7 @@
 
     audio.addEventListener('error', function () {
       failed = true;
-      btn.hidden = true;
+      if (btn) btn.hidden = true;
       console.warn('[WI] Music could not be loaded: ' + cfg.src);
     });
 
@@ -106,8 +106,10 @@
     }
 
     function show() {
-      btn.hidden = false;
-      requestAnimationFrame(function () { btn.classList.add('is-in'); });
+      if (btn) {
+        btn.hidden = false;
+        requestAnimationFrame(function () { btn.classList.add('is-in'); });
+      }
     }
 
     function start() {
@@ -115,30 +117,38 @@
       var p = audio.play();
       if (p && p.catch) { p.catch(function () { /* still blocked; the arm below waits */ }); }
       playing = true;
-      btn.setAttribute('aria-pressed', 'true');
-      btn.setAttribute('aria-label', 'Turn the music off');
-      show();
+      if (btn) {
+        btn.setAttribute('aria-pressed', 'true');
+        btn.setAttribute('aria-label', 'Turn the music off');
+        show();
+      }
       fadeTo(target);
     }
 
     function stop() {
       playing = false;
-      btn.setAttribute('aria-pressed', 'false');
-      btn.setAttribute('aria-label', 'Turn the music on');
+      if (btn) {
+        btn.setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-label', 'Turn the music on');
+      }
       fadeTo(0, function () { audio.pause(); });
     }
 
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      if (failed) return;
-      playing ? stop() : start();
-    });
+    if (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (failed) return;
+        playing ? stop() : start();
+      });
+    }
 
     /* try immediately … */
     audio.play().then(function () {
       playing = true;
-      btn.setAttribute('aria-pressed', 'true');
-      show();
+      if (btn) {
+        btn.setAttribute('aria-pressed', 'true');
+        show();
+      }
       fadeTo(target);
     }).catch(function () {
       /* … refused, as expected. Arm the first touch. */
