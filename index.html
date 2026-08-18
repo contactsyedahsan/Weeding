@@ -97,6 +97,13 @@
     <ellipse cx="15.9" cy="15.7" rx="2.9" ry="2.4" fill="currentColor"/>
   </symbol>
 
+  <!-- Muted musical note (slashed) -->
+  <symbol id="i-note-muted" viewBox="0 0 24 24">
+    <path d="M9 18V6.4l9-2.1V15.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="6.9" cy="18" rx="2.9" ry="2.4" fill="currentColor"/>
+    <ellipse cx="15.9" cy="15.7" rx="2.9" ry="2.4" fill="currentColor"/>
+    <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
   <!-- Botanical sprig: stem + leaves. Used mirrored / rotated everywhere. -->
   <symbol id="i-sprig" viewBox="0 0 200 300">
     <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
@@ -327,6 +334,12 @@
 <nav class="evnav" id="evnav" aria-label="Invitation sections">
   <span class="evnav__pill" aria-hidden="true"></span>
 </nav><audio id="bg-music" src="assets/audio/music.mp3" loop preload="auto" style="display: none;"></audio>
+
+<button type="button" class="audio-btn" id="audio-btn" hidden
+        aria-pressed="false" aria-label="Turn the music on">
+  <svg aria-hidden="true" id="audio-icon"><use href="#i-note-muted"/></svg>
+  <span class="audio-btn__ring" aria-hidden="true"></span>
+</button>
 <!-- ============================================================
      SCRIPTS — plain globals (no ES modules) so index.html also
      works when opened directly from the file system.

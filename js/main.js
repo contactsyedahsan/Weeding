@@ -102,6 +102,13 @@
       console.warn('[WI] Music could not be loaded: ' + cfg.src);
     });
 
+    function updateIcon(isPlaying) {
+      var icon = document.getElementById('audio-icon');
+      if (icon) {
+        icon.innerHTML = '<use href="' + (isPlaying ? '#i-note' : '#i-note-muted') + '"/>';
+      }
+    }
+
     function fadeTo(to, done) {
       if (fade) { clearInterval(fade); fade = null; }
       if (duration <= 0) {
@@ -137,6 +144,7 @@
       if (btn) {
         btn.setAttribute('aria-pressed', 'true');
         btn.setAttribute('aria-label', 'Turn the music off');
+        updateIcon(true);
         show();
       }
       fadeTo(target);
@@ -147,6 +155,7 @@
       if (btn) {
         btn.setAttribute('aria-pressed', 'false');
         btn.setAttribute('aria-label', 'Turn the music on');
+        updateIcon(false);
       }
       fadeTo(0, function () { audio.pause(); });
     }
@@ -164,12 +173,16 @@
       playing = true;
       if (btn) {
         btn.setAttribute('aria-pressed', 'true');
+        updateIcon(true);
         show();
       }
       fadeTo(target);
     }).catch(function () {
       /* … refused, as expected. Arm the first touch. */
-      show();
+      if (btn) {
+        updateIcon(false);
+        show();
+      }
       var arm = function () {
         document.removeEventListener('pointerdown', arm);
         document.removeEventListener('touchstart', arm);
