@@ -79,9 +79,11 @@
     var audio = new Audio(cfg.src);
     audio.loop = cfg.loop !== false;
     audio.preload = 'auto';
-    audio.volume = 0;
 
     var target = cfg.volume != null ? cfg.volume : 1.0;
+    var duration = cfg.fadeSeconds != null ? cfg.fadeSeconds : 2.2;
+    audio.volume = duration > 0 ? 0 : target;
+
     var failed = false, playing = false, fade = null;
 
     audio.addEventListener('error', function () {
@@ -91,8 +93,13 @@
     });
 
     function fadeTo(to, done) {
-      if (fade) clearInterval(fade);
-      var step = target / ((cfg.fadeSeconds || 2) * 20);
+      if (fade) { clearInterval(fade); fade = null; }
+      if (duration <= 0) {
+        audio.volume = Math.max(0, Math.min(1, to));
+        if (done) done();
+        return;
+      }
+      var step = target / (duration * 20);
       fade = setInterval(function () {
         var v = audio.volume + (to > audio.volume ? step : -step);
         if ((to > audio.volume && v >= to) || (to <= audio.volume && v <= to)) {

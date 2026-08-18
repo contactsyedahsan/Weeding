@@ -158,7 +158,7 @@ WI.countdown = {
 WI.audio = {
   src: 'assets/audio/music.mp3',
   volume: 1.0,
-  fadeSeconds: 2.2,
+  fadeSeconds: 0,
   loop: true
 };
 
