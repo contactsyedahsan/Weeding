@@ -18,10 +18,8 @@
 /* GSAP clears will-change once a reveal has run */
 .has-motion .is-revealed-el{will-change:auto}
 
-/* Ornaments enter with their sections rather than on load */
-.has-motion .event__panel,
-.has-motion .venue-card,
-.has-motion .tl__item{will-change:transform,opacity}
+/* the panel is revealed by screens.js, not by scroll */
+.has-motion .event__panel{will-change:transform,opacity}
 
 /* ---------- 2 · AMBIENT KEYFRAMES -------------------------- */
 @keyframes floatSlow{
@@ -35,43 +33,128 @@
 .float-slow{animation:floatSlow 9s var(--e-soft) infinite}
 .float-slower{animation:floatSlower 13s var(--e-soft) infinite}
 
-@keyframes btnSheen{
-  0%,62%{left:-60%}
-  92%,100%{left:130%}
-}
 @keyframes ringPulse{
   0%  {transform:scale(1);opacity:.65}
   70% {transform:scale(1.32);opacity:0}
   100%{transform:scale(1.32);opacity:0}
 }
-@keyframes cueDrop{
-  0%  {top:-100%}
-  60% {top:100%}
-  100%{top:100%}
+/* A breath, not a bounce: under half a degree and a hair of scale, so
+   the type reads as alive rather than restless. */
+@keyframes typeBreathe{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  50%    {transform:translate3d(0,-2px,0) scale(1.006)}
 }
-@keyframes sealBreathe{
-  0%,100%{transform:translate(-50%,-50%) scale(1)}
-  50%    {transform:translate(-50%,-50%) scale(1.028)}
+
+@keyframes navPop{
+  0%  {opacity:0;transform:translate3d(0,18px,0) scale(.72)}
+  58% {opacity:1;transform:translate3d(0,-4px,0) scale(1.08)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
 }
-.intro .seal{animation:sealBreathe 4.4s var(--e-soft) infinite}
+@keyframes navPetalBob{
+  0%,100%{translate:0 0}
+  50%    {translate:0 -2px}
+}
+@keyframes panelGlow{
+  0%,100%{opacity:.18;transform:translate3d(-18%,0,0)}
+  50%    {opacity:.42;transform:translate3d(18%,0,0)}
+}
+@keyframes filmTextFromLeft{
+  0%  {opacity:0;transform:translate3d(-52px,14px,0);filter:blur(8px)}
+  70% {opacity:1;filter:blur(0)}
+  100%{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+}
+@keyframes filmTextFromRight{
+  0%  {opacity:0;transform:translate3d(52px,14px,0);filter:blur(8px)}
+  70% {opacity:1;filter:blur(0)}
+  100%{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+}
+@keyframes filmRuleBloom{
+  0%  {opacity:0;transform:scaleX(.18)}
+  100%{opacity:1;transform:scaleX(1)}
+}
 
 /* ---------- 3 · GOLD FOIL SHIMMER -------------------------- */
 @keyframes foilTravel{
   0%  {background-position:0% 50%}
   100%{background-position:100% 50%}
 }
-.has-motion .foil.is-shimmering{
+.has-motion .foil{
   animation:foilTravel 5.5s var(--e-soft) infinite alternate;
 }
 
-/* ---------- 4 · TIMELINE NODE GLOW ------------------------- */
-@keyframes nodeGlow{
-  0%  {box-shadow:0 0 0 0 rgba(201,164,92,.5)}
-  100%{box-shadow:0 0 0 12px rgba(201,164,92,0)}
+/* ---------- 4 Â· CEREMONY PETALS + SCROLL BLOOMS ----------- */
+.petal-canvas{
+  position:fixed;inset:0;z-index:4;
+  width:100%;height:100%;pointer-events:none;
+  opacity:.82;
 }
-.tl__item.is-on .tl__node::before{
-  content:'';position:absolute;inset:0;border-radius:50%;
-  animation:nodeGlow 2.4s var(--e-soft) 1;
+.ceremony-blooms{
+  position:fixed;inset:0;z-index:5;
+  pointer-events:none;overflow:hidden;
+  perspective:900px;
+}
+.ceremony-bloom{
+  position:absolute;
+  width:clamp(2.2rem,8vw,5.8rem);
+  height:clamp(2.2rem,8vw,5.8rem);
+  color:rgba(168,132,44,.42);
+  filter:drop-shadow(0 10px 18px rgba(92,18,38,.12));
+  opacity:.55;
+  transform:
+    translate3d(var(--cb-x, 0px), var(--cb-y, 0px), var(--cb-z, 0px))
+    rotateX(var(--cb-rx, 0deg))
+    rotateY(var(--cb-ry, 0deg))
+    rotate(var(--cb-r, 0deg))
+    scale(var(--cb-s, 1));
+  transition:opacity .7s var(--e-out);
+  will-change:transform;
+}
+.ceremony-bloom--leaf{color:rgba(92,94,45,.36)}
+.ceremony-bloom:nth-child(1){left:-1.3rem;top:12%}
+.ceremony-bloom:nth-child(2){right:-1.1rem;top:24%;width:clamp(2rem,7vw,4.8rem)}
+.ceremony-bloom:nth-child(3){left:7%;bottom:18%;width:clamp(1.8rem,6vw,3.8rem)}
+.ceremony-bloom:nth-child(4){right:11%;bottom:14%;width:clamp(2rem,7vw,4.4rem)}
+.ceremony-bloom:nth-child(5){left:48%;top:8%;width:clamp(1.8rem,5vw,3.4rem);opacity:.38}
+
+.has-motion .evnav:not(.is-bloomed) .evnav__link{
+  opacity:0;
+  transform:translate3d(0,16px,0) scale(.82);
+}
+.has-motion .evnav.is-bloomed .evnav__link{
+  animation:
+    navPop .72s var(--e-out) both,
+    navPetalBob 4.8s ease-in-out infinite;
+  animation-delay:
+    calc(var(--nav-i, 0) * 120ms),
+    calc(.9s + var(--nav-i, 0) * 170ms);
+}
+
+.has-motion .event__panel::after{
+  content:'';
+  position:absolute;inset:8px;z-index:0;pointer-events:none;
+  background:linear-gradient(105deg,
+    transparent 15%,
+    rgba(255,246,226,.28) 44%,
+    rgba(201,164,92,.18) 50%,
+    transparent 66%);
+  animation:panelGlow 7s var(--e-soft) infinite;
+}
+.has-motion .event__panel > *{position:relative;z-index:1}
+
+.has-motion .film-copy > *{opacity:0;will-change:transform,opacity,filter}
+.has-motion .screen.is-active .film-copy__title{
+  animation:filmTextFromLeft 1.05s var(--e-out) .32s both;
+}
+.has-motion .screen.is-active .film-copy__subtitle{
+  animation:filmTextFromRight 1.05s var(--e-out) .58s both;
+}
+.has-motion .film-copy::after{
+  opacity:0;
+  transform:scaleX(.18);
+  transform-origin:center;
+}
+.has-motion .screen.is-active .film-copy::after{
+  animation:filmRuleBloom .9s var(--e-out) .95s both;
 }
 
 /* ---------- 5 · DESKTOP CURSOR GLOW ------------------------ */
@@ -95,11 +178,12 @@ html:not(.has-motion) .asset-3d{opacity:1!important;transform:none!important}
 /* ---------- 7 · REDUCED MOTION / NO-JS FALLBACK ------------ */
 html:not(.has-motion) [data-reveal]{opacity:1!important;transform:none!important}
 html:not(.has-motion) .float-slow,
-html:not(.has-motion) .float-slower,
-html:not(.has-motion) .intro .seal,
-html:not(.has-motion) .btn-open::after,
-html:not(.has-motion) .scroll-cue__line::after{animation:none!important}
-html:not(.has-motion) .sweep{display:none}
+html:not(.has-motion) .float-slower{animation:none!important}
+/* no motion engine: the films never run, the text is simply there */
+html:not(.has-motion) .screen__film{display:none}
+html:not(.has-motion) .screen__decor{opacity:1!important}
+html:not(.has-motion) .petal-canvas,
+html:not(.has-motion) .ceremony-blooms{display:none!important}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
@@ -109,6 +193,9 @@ html:not(.has-motion) .sweep{display:none}
     scroll-behavior:auto!important;
   }
   [data-reveal]{opacity:1!important;transform:none!important}
-  .dust-layer,.intro__dust,.finale__dust,.event__dust{display:none}
+  .dust-layer{display:none}
+  .petal-canvas,.ceremony-blooms{display:none!important}
+  .screen__film{display:none}
+  .screen__decor{opacity:1!important}
   .cursor-glow{display:none}
 }

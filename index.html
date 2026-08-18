@@ -223,285 +223,133 @@
 
 
 <!-- ============================================================
-     01 · INTRO — THE ENVELOPE
-     ============================================================ -->
-<div id="intro" class="intro" role="dialog" aria-label="Open the wedding invitation">
-  <canvas class="intro__dust" aria-hidden="true"></canvas>
-  <div class="intro__glow" aria-hidden="true"></div>
-
-  <div class="intro__stage">
-    <div class="envelope" id="envelope">
-
-      <!-- Back panel / inner card that rises -->
-      <div class="envelope__card" aria-hidden="true">
-        <div class="envelope__card-inner">
-          <svg class="card-corner card-corner--tl"><use href="#i-corner"/></svg>
-          <svg class="card-corner card-corner--br"><use href="#i-corner"/></svg>
-          <span class="card-mono">M<em>&amp;</em>D</span>
-        </div>
-      </div>
-
-      <!-- Envelope body -->
-      <div class="envelope__body">
-        <div class="envelope__paper"></div>
-        <div class="envelope__fold envelope__fold--l" aria-hidden="true"></div>
-        <div class="envelope__fold envelope__fold--r" aria-hidden="true"></div>
-        <div class="envelope__fold envelope__fold--b" aria-hidden="true"></div>
-        <div class="envelope__rule" aria-hidden="true"></div>
-      </div>
-
-      <!-- Flap -->
-      <div class="envelope__flap" aria-hidden="true">
-        <div class="envelope__flap-face"></div>
-      </div>
-
-      <!-- Wax seal -->
-      <div class="seal" id="seal" aria-hidden="true">
-        <div class="seal__wax">
-          <span class="seal__mono">M<i>&amp;</i>D</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="intro__copy">
-      <p class="intro__eyebrow">Bismillāhir Raḥmānir Raḥīm</p>
-      <!-- Not an <h1>: the couple's names in the hero are the page's
-           single top-level heading. This is the cover of the envelope. -->
-      <p class="intro__title">The Wedding Invitation</p>
-      <p class="intro__names">Meezab <span class="amp">&amp;</span> Dua</p>
-      <svg class="ornament ornament--divider intro__div"><use href="#i-divider"/></svg>
-
-      <button type="button" class="btn-open" id="btn-open">
-        <span class="btn-open__frame" aria-hidden="true"></span>
-        <span class="btn-open__label">Open Invitation</span>
-      </button>
-      <p class="intro__hint">Best experienced with sound</p>
-    </div>
-  </div>
-</div>
-
-<!-- Cinematic sweep used for the open sequence and section transitions -->
-<div class="sweep" id="sweep" aria-hidden="true">
-  <div class="sweep__panel"></div>
-  <svg class="sweep__ribbon"><use href="#i-ribbon"/></svg>
-</div>
-
-
-<!-- ============================================================
-     FLOATING UI — event nav + audio
-     ============================================================ -->
-<nav class="evnav" id="evnav" aria-label="Jump to an event">
-  <span class="evnav__pill" aria-hidden="true"></span>
-  <a class="evnav__link" href="#mehndi" data-nav="mehndi">Mehndi</a>
-  <a class="evnav__link" href="#rukhsati" data-nav="rukhsati">Rukhsati</a>
-  <a class="evnav__link" href="#shalima" data-nav="shalima">Shalima</a>
-</nav>
-
-<button type="button" class="audio-btn" id="audio-btn" hidden aria-pressed="false" aria-label="Play ambient music">
-  <svg aria-hidden="true"><use href="#i-note"/></svg>
-  <span class="audio-btn__ring" aria-hidden="true"></span>
-</button>
-
-
-<!-- ============================================================
-     MAIN INVITATION
+     THE INVITATION — five screens
+     Each screen plays its own film, the film slides away upward,
+     and that screen's text rises into its place.
      ============================================================ -->
 <main id="site" class="site" tabindex="-1">
 
-  <!-- ---------- 02 · HERO ---------- -->
-  <header class="hero" id="hero">
-    <div class="hero__decor" aria-hidden="true">
-      <svg class="ornament arch" data-parallax="0.05"><use href="#i-arch"/></svg>
-      <svg class="ornament sprig sprig--hero-l" data-parallax="0.16"><use href="#i-sprig"/></svg>
-      <svg class="ornament sprig sprig--hero-r" data-parallax="0.16"><use href="#i-sprig"/></svg>
-      <svg class="ornament bloom bloom--hero-1 float-slow" data-parallax="0.5"><use href="#i-bloom"/></svg>
-      <svg class="ornament bloom bloom--hero-2 float-slower" data-parallax="0.42"><use href="#i-bloom"/></svg>
-      <svg class="ribbon ribbon--hero" data-parallax="0.26"><use href="#i-ribbon"/></svg>
-      <div class="asset-layer" data-asset-layer="hero"></div>
+  <!-- ---------- HOME ---------- -->
+  <section class="screen is-active" id="screen-home" data-screen="home"
+           aria-label="Wedding invitation">
+    <div class="screen__film" data-film aria-hidden="true">
+      <video class="screen__video" playsinline muted preload="none"
+             disablepictureinpicture></video>
+      <div class="screen__scrim"></div>
     </div>
 
-    <div class="hero__inner shell">
-      <p class="bismillah" data-reveal="fade" lang="ar" dir="rtl">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْم</p>
-      <p class="bismillah__latin" data-reveal="up">In the name of Allah, the Most Gracious, the Most Merciful</p>
-
-      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
-
-      <p class="hero__lead label" data-reveal="up">Together with their families</p>
-
-      <h1 class="couple">
-        <span class="couple__name foil" data-reveal="mask" id="name-groom">Syed Meezab E Rehmat Ali Hyderi</span>
-        <span class="couple__meta" data-reveal="up">S/O Syed Mazher Ali Hyderi</span>
-        <span class="couple__amp" data-reveal="scale" aria-hidden="true">&amp;</span>
-        <span class="sr-only">and</span>
-        <span class="couple__name foil" data-reveal="mask" id="name-bride">Dua Sarwar</span>
-        <span class="couple__meta" data-reveal="up">D/O Late Ghulam Sarwar</span>
-      </h1>
-
-      <p class="hero__invite" data-reveal="up">joyfully invite you to celebrate their wedding</p>
-
-      <div class="hero__dates" data-reveal="up">
-        <span>29 Aug</span><i aria-hidden="true"></i>
-        <span>01 Sep</span><i aria-hidden="true"></i>
-        <span>03 Sep</span>
-        <em>2026</em>
+    <div class="screen__body">
+      <div class="screen__decor" aria-hidden="true">
+        <svg class="ornament arch"><use href="#i-arch"/></svg>
+        <svg class="ornament sprig sprig--l"><use href="#i-sprig"/></svg>
+        <svg class="ornament sprig sprig--r"><use href="#i-sprig"/></svg>
+        <svg class="ribbon ribbon--foot"><use href="#i-ribbon"/></svg>
+        <div class="asset-layer" data-asset-layer="home"></div>
       </div>
-    </div>
 
-    <div class="scroll-cue" aria-hidden="true">
-      <span class="scroll-cue__line"></span>
-      <span class="scroll-cue__text">Scroll</span>
-    </div>
-  </header>
+      <div class="shell home">
+        <p class="bismillah" data-reveal="fade" lang="ar" dir="rtl">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْم</p>
+        <p class="bismillah__latin" data-reveal="up">In the name of Allah, the Most Gracious, the Most Merciful</p>
 
+        <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
 
-  <!-- ---------- 03 · CELEBRATIONS OVERTURE ---------- -->
-  <section class="overture" id="celebrations" aria-labelledby="overture-title">
-    <div class="overture__decor" aria-hidden="true">
-      <svg class="ribbon ribbon--overture" data-parallax="0.3"><use href="#i-ribbon-gold"/></svg>
-      <svg class="ornament sprig sprig--ov-l" data-parallax="0.14"><use href="#i-sprig"/></svg>
-      <div class="asset-layer" data-asset-layer="celebrations"></div>
-    </div>
-    <div class="shell overture__inner">
-      <p class="label" data-reveal="up">Three evenings, one story</p>
-      <h2 class="section-title foil" id="overture-title" data-reveal="mask">The Celebrations</h2>
-      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
-      <p class="overture__note" data-reveal="up">
-        We invite you to share in three evenings of music, prayer and joy —
-        a mehndi lit by qawwali, a rukhsati held close by family, and a night of elegance to close.
-      </p>
+        <p class="hero__lead label" data-reveal="up">Together with their families</p>
+
+        <h1 class="couple">
+          <span class="couple__name foil" data-reveal="mask" id="name-groom">Syed Meezab E Rehmat Ali Hyderi</span>
+          <span class="couple__meta" data-reveal="up">S/O Syed Mazher Ali Hyderi</span>
+          <span class="couple__amp" data-reveal="scale" aria-hidden="true">&amp;</span>
+          <span class="sr-only">and</span>
+          <span class="couple__name foil" data-reveal="mask" id="name-bride">Dua Sarwar</span>
+          <span class="couple__meta" data-reveal="up">D/O Late Ghulam Sarwar</span>
+        </h1>
+
+        <p class="hero__invite" data-reveal="up">joyfully invite you to celebrate their wedding</p>
+
+        <div class="hero__dates" data-reveal="up">
+          <span>29 Aug</span><i aria-hidden="true"></i>
+          <span>01 Sep</span><i aria-hidden="true"></i>
+          <span>03 Sep</span>
+          <em>2026</em>
+        </div>
+
+        <!-- ---- countdown ---- -->
+        <div class="home__countdown" data-reveal="up">
+          <svg class="ornament ornament--divider"><use href="#i-divider"/></svg>
+          <p class="label">Counting down to our celebration</p>
+
+          <div class="clock" id="clock" role="timer" aria-live="off">
+            <div class="clock__unit"><span class="clock__num" data-cd="days">—</span><span class="clock__lbl">Days</span></div>
+            <span class="clock__sep" aria-hidden="true"></span>
+            <div class="clock__unit"><span class="clock__num" data-cd="hours">—</span><span class="clock__lbl">Hours</span></div>
+            <span class="clock__sep" aria-hidden="true"></span>
+            <div class="clock__unit"><span class="clock__num" data-cd="minutes">—</span><span class="clock__lbl">Minutes</span></div>
+            <span class="clock__sep" aria-hidden="true"></span>
+            <div class="clock__unit"><span class="clock__num" data-cd="seconds">—</span><span class="clock__lbl">Seconds</span></div>
+          </div>
+          <p class="clock__done" id="clock-done" hidden>The celebrations have begun.</p>
+          <p class="clock__target" id="clock-target"></p>
+        </div>
+      </div>
     </div>
   </section>
 
 
-  <!-- ---------- 04 · EVENT PANELS (rendered from js/config.js) ---------- -->
+  <!-- ---------- MEHNDI · RUKHSATI · SHALIMA (rendered from js/config.js) ---------- -->
   <div id="events-root"></div>
 
 
-  <!-- ---------- 05 · COUNTDOWN ---------- -->
-  <section class="countdown" id="countdown" aria-labelledby="countdown-title">
-    <div class="countdown__decor" aria-hidden="true">
-      <svg class="ornament corner corner--tl" data-parallax="0.08"><use href="#i-corner"/></svg>
-      <svg class="ornament corner corner--br" data-parallax="0.08"><use href="#i-corner"/></svg>
-      <svg class="ornament bloom bloom--cd float-slow" data-parallax="0.45"><use href="#i-bloom"/></svg>
-      <div class="asset-layer" data-asset-layer="countdown"></div>
-    </div>
-    <div class="shell">
-      <p class="label" data-reveal="up">The wait</p>
-      <h2 class="section-title foil" id="countdown-title" data-reveal="mask">Counting Down to Our Celebration</h2>
-      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
-
-      <div class="clock" id="clock" data-reveal="up" role="timer" aria-live="off">
-        <div class="clock__unit"><span class="clock__num" data-cd="days">—</span><span class="clock__lbl">Days</span></div>
-        <span class="clock__sep" aria-hidden="true"></span>
-        <div class="clock__unit"><span class="clock__num" data-cd="hours">—</span><span class="clock__lbl">Hours</span></div>
-        <span class="clock__sep" aria-hidden="true"></span>
-        <div class="clock__unit"><span class="clock__num" data-cd="minutes">—</span><span class="clock__lbl">Minutes</span></div>
-        <span class="clock__sep" aria-hidden="true"></span>
-        <div class="clock__unit"><span class="clock__num" data-cd="seconds">—</span><span class="clock__lbl">Seconds</span></div>
-      </div>
-      <p class="clock__done" id="clock-done" hidden>The celebrations have begun.</p>
-      <p class="clock__target" id="clock-target" data-reveal="fade"></p>
-    </div>
-  </section>
-
-
-  <!-- ---------- 06 · TIMELINE ---------- -->
-  <section class="timeline" id="timeline" aria-labelledby="timeline-title">
-    <div class="shell">
-      <p class="label" data-reveal="up">In order</p>
-      <h2 class="section-title foil" id="timeline-title" data-reveal="mask">The Order of Days</h2>
-      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
-      <ol class="tl" id="tl-root"></ol>
-    </div>
-  </section>
-
-
-  <!-- ---------- 07 · VENUES ---------- -->
-  <section class="venues" id="venues" aria-labelledby="venues-title">
-    <div class="venues__decor" aria-hidden="true">
-      <svg class="ribbon ribbon--venues" data-parallax="0.24"><use href="#i-ribbon-gold"/></svg>
-      <div class="asset-layer" data-asset-layer="venues"></div>
-    </div>
-    <div class="shell">
-      <p class="label" data-reveal="up">Directions</p>
-      <h2 class="section-title foil" id="venues-title" data-reveal="mask">Where to Join Us</h2>
-      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
-      <div class="venues__grid" id="venues-root"></div>
-    </div>
-  </section>
-
-
-  <!-- ---------- 08 · CLOSING ---------- -->
-  <section class="closing" id="closing" aria-labelledby="closing-title">
-    <div class="closing__decor" aria-hidden="true">
-      <svg class="ornament sprig sprig--cl-l" data-parallax="0.15"><use href="#i-sprig"/></svg>
-      <svg class="ornament sprig sprig--cl-r" data-parallax="0.15"><use href="#i-sprig"/></svg>
-      <div class="asset-layer" data-asset-layer="closing"></div>
-    </div>
-    <div class="shell closing__inner">
-      <svg class="ornament bloom bloom--closing" data-reveal="scale" aria-hidden="true"><use href="#i-bloom"/></svg>
-      <h2 class="closing__line" id="closing-title" data-reveal="mask">
-        We would be honored to celebrate these beautiful moments with you.
-      </h2>
-      <p class="closing__sign label" data-reveal="up">With love</p>
-      <p class="closing__couple" data-reveal="up">Syed Meezab E Rehmat Ali Hyderi <span class="amp">&amp;</span> Dua Sarwar</p>
-
-      <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
-
-      <p class="label save-label" data-reveal="up">Save the Dates</p>
-      <ul class="save-dates" id="save-dates"></ul>
-    </div>
-  </section>
-
-
-  <!-- ---------- 09 · FINAL FRAME ---------- -->
-  <section class="finale" id="finale" aria-labelledby="finale-title">
-    <canvas class="finale__dust" aria-hidden="true"></canvas>
-    <div class="finale__decor" aria-hidden="true">
-      <svg class="ribbon ribbon--finale" data-parallax="0.2"><use href="#i-ribbon"/></svg>
-      <div class="asset-layer" data-asset-layer="finale"></div>
+  <!-- ---------- LOCATIONS ---------- -->
+  <section class="screen" id="screen-locations" data-screen="locations"
+           aria-labelledby="locations-title">
+    <div class="screen__film screen__film--behind" data-film aria-hidden="true">
+      <video class="screen__video" playsinline muted loop preload="none"
+             disablepictureinpicture></video>
+      <div class="screen__scrim screen__scrim--locations"></div>
     </div>
 
-    <div class="finale__frame">
-      <svg class="ornament corner corner--tl" aria-hidden="true"><use href="#i-corner"/></svg>
-      <svg class="ornament corner corner--tr" aria-hidden="true"><use href="#i-corner"/></svg>
-      <svg class="ornament corner corner--bl" aria-hidden="true"><use href="#i-corner"/></svg>
-      <svg class="ornament corner corner--br" aria-hidden="true"><use href="#i-corner"/></svg>
-
-      <div class="finale__inner">
-        <p class="finale__thanks label" data-reveal="up">Thank you for being part of our celebration</p>
-        <h2 class="finale__names foil foil--bright" id="finale-title" data-reveal="mask">Meezab <span class="amp">&amp;</span> Dua</h2>
-        <div class="finale__dates" data-reveal="up">
-          <span>29 August 2026</span><span>1 September 2026</span><span>3 September 2026</span>
-        </div>
-        <div class="finale__seal" data-reveal="scale">
-          <svg class="ornament wreath" aria-hidden="true"><use href="#i-wreath"/></svg>
-          <span class="finale__mono">M<i>&amp;</i>D</span>
-        </div>
+    <div class="screen__body">
+      <div class="shell locations">
+        <p class="label" data-reveal="up">Directions</p>
+        <h2 class="section-title foil" id="locations-title" data-reveal="mask">Where to Join Us</h2>
+        <svg class="ornament ornament--divider" data-reveal="scale"><use href="#i-divider"/></svg>
+        <div class="pins" id="pins-root"></div>
       </div>
     </div>
-
-    <footer class="credit">
-      <p>Made with love · 2026</p>
-    </footer>
   </section>
 
 </main>
 
 
 <!-- ============================================================
+     BOTTOM BAR + MUSIC (rendered from WI.nav)
+     ============================================================ -->
+<nav class="evnav" id="evnav" aria-label="Invitation sections">
+  <span class="evnav__pill" aria-hidden="true"></span>
+</nav>
+
+<button type="button" class="audio-btn" id="audio-btn" hidden
+        aria-pressed="false" aria-label="Turn the music off">
+  <svg aria-hidden="true"><use href="#i-note"/></svg>
+  <span class="audio-btn__ring" aria-hidden="true"></span>
+</button>
+
+
+
+<!-- ============================================================
      SCRIPTS — plain globals (no ES modules) so index.html also
      works when opened directly from the file system.
      ============================================================ -->
+<!-- Lenis is gone: each screen scrolls on its own now, and native scroll
+     inside a short screen beats a smooth-scroll library on a phone. -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
 
 <script src="js/config.js" defer></script>
 <script src="js/assets.js" defer></script>
 <script src="js/events.js" defer></script>
 <script src="js/countdown.js" defer></script>
 <script src="js/animations.js" defer></script>
+<script src="js/screens.js" defer></script>
 <script src="js/main.js" defer></script>
 
 </body>

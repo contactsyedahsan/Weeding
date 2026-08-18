@@ -18,6 +18,45 @@ WI.couple = {
 };
 
 /* -------------------------------------------------------------
+   1b · SCREENS
+   -------------------------------------------------------------
+   The invitation is five screens. Each one plays its own short film,
+   the film then slides up and away, and that screen's text rises
+   into its place. The bar along the bottom moves between them.
+
+   video    the film for this screen. Leave "" and the screen simply
+            shows its text straight away — no blank frame, no error.
+            Same if the file is missing or the browser refuses it.
+   poster   first frame, shown while the film loads
+   preload  true only for `home`. Everything else downloads the first
+            time a guest actually opens that screen, so the QR link
+            opens fast on mobile data.
+   loop     true for `locations`, where the film is a background
+
+   NOTE ON SOUND: every film is muted, and that is not a preference —
+   no browser will autoplay a video that has sound. All five had their
+   audio stripped during encoding. The only sound is WI.audio below.
+   ------------------------------------------------------------- */
+WI.screens = {
+  home:      { video: 'assets/video/home.mp4',      poster: 'assets/video/home.jpg',      preload: true },
+  mehndi:    { video: 'assets/video/mehndi.mp4',    poster: 'assets/video/mehndi.jpg' },
+  rukhsati:  { video: 'assets/video/rukhsati.mp4',  poster: 'assets/video/rukhsati.jpg' },
+  shalima:   { video: 'assets/video/shalima.mp4',   poster: 'assets/video/shalima.jpg' },
+  locations: { video: 'assets/video/locations.mp4', poster: 'assets/video/locations.jpg', loop: true }
+};
+
+/* The bar along the bottom. `label` is what the guest reads; `icon`
+   makes an item icon-only, which is how Home stays narrow enough for
+   five items to fit a 320px phone. */
+WI.nav = [
+  { id: 'home',      label: 'Home',      icon: true },
+  { id: 'mehndi',    label: 'Mehndi'  },
+  { id: 'rukhsati',  label: 'Rukhsati' },
+  { id: 'shalima',   label: 'Shalima' },
+  { id: 'locations', label: 'Locations' }
+];
+
+/* -------------------------------------------------------------
    2 · EVENTS
    -------------------------------------------------------------
    locationUrl : leave "" to hide the VIEW LOCATION button entirely.
@@ -102,15 +141,25 @@ WI.countdown = {
 };
 
 /* -------------------------------------------------------------
-   4 · AUDIO  (optional)
-   Drop an mp3 into assets/audio/ and put its path in `src`.
-   While `src` is "" the music button stays hidden — no broken
-   player, no console errors.
+   4 · MUSIC
+   -------------------------------------------------------------
+   Loops for as long as the invitation is open.
+
+   No browser lets a page start sound on its own, so the music waits
+   for the guest's very first tap — anywhere on the screen counts, and
+   in practice that is a second or two in. The ♪ button in the corner
+   turns it off again.
+
+   On an iPhone the physical silent switch still wins; nothing a web
+   page can do changes that.
+
+   Set src to "" and the music, and its button, disappear entirely.
    ------------------------------------------------------------- */
 WI.audio = {
-  src: '',                       // e.g. 'assets/audio/ambient.mp3'
-  volume: 0.35,
-  fadeSeconds: 1.6
+  src: 'assets/audio/music.mp3',
+  volume: 0.32,
+  fadeSeconds: 2.2,
+  loop: true
 };
 
 /* -------------------------------------------------------------

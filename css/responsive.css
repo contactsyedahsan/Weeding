@@ -2,50 +2,53 @@
    responsive.css
    -------------------------------------------------------------
    Base styles are written for a 360–430px phone. Everything here
-   is an upward adaptation, plus a few small-phone corrections.
+   is an upward adaptation, plus corrections for the narrowest
+   screens and for a phone turned sideways.
    ============================================================= */
 
 /* ---------- VERY SMALL PHONES (≤360px) --------------------- */
 @media (max-width:360px){
   :root{--shell:min(100% - 2rem, 68rem)}
+
+  .film-copy{top:1rem;width:min(100% - 1.7rem,34rem)}
+  .film-copy__title{font-size:1.95rem}
+  .film-copy__subtitle{font-size:1.08rem}
+
   .couple__name{font-size:2.15rem}
-  .event__title{font-size:2.35rem;letter-spacing:.1em}
-  .clock{gap:.2rem}
-  .clock__num{font-size:1.85rem}
-  /* stays at/above 10px — only the tracking gives way */
-  .clock__lbl{font-size:.6rem;letter-spacing:.1em;padding-left:.1em}
-  .clock__sep{display:none}
-  .evnav__link{padding:.88rem .62rem;font-size:.6rem;letter-spacing:.16em}
-  .envelope{width:83vw}
-  .btn-open{padding:.95rem 1.7rem}
-  .btn-open__label{letter-spacing:.28em;padding-left:.28em}
-  .btn-loc{padding:.9rem 1.1rem;letter-spacing:.2em}
   .couple__meta{letter-spacing:.2em}
   .hero__dates{letter-spacing:.2em}
-  .tl{padding-left:3rem}
-  .tl__node{left:-3rem}
+  .event__title{font-size:2.35rem;letter-spacing:.1em}
+
+  /* five items in the bar is the tightest thing on the page:
+     tracking gives way, type never drops below 10px */
+  .evnav{gap:0;padding:.3rem}
+  .evnav__link{padding:.82rem .34rem;font-size:.58rem;letter-spacing:.05em}
+  .evnav__link--icon{padding-left:.5rem;padding-right:.5rem}
+  .evnav__pill{top:.3rem;bottom:.3rem}
+
+  .clock{gap:.2rem}
+  .clock__num{font-size:1.8rem}
+  .clock__lbl{font-size:.6rem;letter-spacing:.08em;padding-left:.08em}
+  .clock__sep{display:none}
+
+  .btn-loc{padding:.5rem .85rem;letter-spacing:.14em}
+  .pin{padding:.9rem .85rem;column-gap:.7rem}
 }
 
 /* ---------- SHORT VIEWPORTS -------------------------------- */
 @media (max-height:680px) and (max-width:900px){
-  .hero{min-height:auto;padding-top:5.5rem;padding-bottom:5.5rem}
-  .scroll-cue{display:none}
-  .intro__stage{gap:1.2rem}
-  .envelope{width:min(15rem,58vw)}
-  .intro__names{font-size:1.9rem}
+  .screen__body{padding-top:2.2rem}
+  .film-copy{top:.85rem}
+  .film-copy__title{font-size:1.9rem}
+  .film-copy__subtitle{font-size:1.06rem;margin-top:.38rem}
+  .film-copy::after{margin-top:.5rem}
+  .home__countdown{margin-top:1.3rem}
 }
 
 /* ---------- LARGE PHONES / SMALL TABLETS (≥560px) ---------- */
 @media (min-width:560px){
-  .save-dates{flex-direction:row;justify-content:center;gap:2.4rem}
-  .save-dates li{gap:.3rem}
-  .finale__dates{flex-direction:row;gap:1.6rem}
-  .finale__dates span{position:relative}
-  .finale__dates span+span::before{
-    content:'';position:absolute;left:-.85rem;top:50%;
-    width:3px;height:3px;border-radius:50%;background:rgba(201,164,92,.6);
-  }
   .hero__dates em{width:auto;margin-top:0;margin-left:.5rem}
+  .pin{column-gap:1.15rem;padding:1.2rem 1.35rem}
 }
 
 /* ---------- TABLET (≥768px) -------------------------------- */
@@ -60,99 +63,63 @@
   .event__frame .corner{width:4.4rem;height:4.4rem}
   .event__desc{font-size:1.1rem;padding:.6rem 1.6rem}
 
-  .venues__grid{grid-template-columns:repeat(3,1fr);gap:1.4rem}
-  .venue-card{padding:2.8rem 1.4rem 2.4rem}
-
-  .tl{max-width:34rem;padding-left:4.4rem}
-  .tl__node{left:-4.4rem;width:2.6rem;height:2.6rem}
-  .tl::before,.tl__draw{left:1.3rem}
-
-  .evnav{bottom:1.6rem;padding:.5rem}
-  .evnav__link{padding:.55rem 1.15rem;font-size:.58rem;letter-spacing:.3em}
+  .evnav{padding:.46rem;gap:.14rem}
+  .evnav__link{padding:.86rem 1rem;font-size:.62rem;letter-spacing:.22em}
+  .evnav__link--icon{padding-left:1.1rem;padding-right:1.1rem}
+  .evnav__pill{top:.46rem;bottom:.46rem}
 
   .audio-btn{width:3.2rem;height:3.2rem;right:1.6rem;top:1.6rem}
 
   .clock{gap:2.2rem}
-  .clock__sep{height:3.4rem}
+  .clock__sep{height:3.2rem}
 
   .bismillah{line-height:2}
+  .pins{max-width:44rem;margin-inline:auto}
 }
 
 /* ---------- DESKTOP (≥1024px) ------------------------------ */
 @media (min-width:1024px){
-  :root{--sec-y:clamp(8rem,11vw,13rem)}
+  /* The invitation keeps a narrow, portrait measure; the decoration
+     is what spreads out to fill the wider screen. */
+  .screen__body{padding-top:clamp(3.25rem,4.6vw,4.4rem);padding-bottom:8rem}
+  .home,.locations{max-width:48rem;margin-inline:auto}
 
-  /* The invitation keeps a narrow, portrait measure; the decoration is
-     what spreads out to fill the wider screen. */
-  /* Tightened so the whole invitation — Bismillah through the date band
-     and the scroll cue — lands inside one 900px-tall desktop viewport. */
-  .hero{padding-top:clamp(3.25rem,4.6vw,4.4rem);padding-bottom:clamp(5rem,7vw,6.1rem)}
-  .hero__inner{max-width:48rem;margin-inline:auto}
-  .hero__decor .arch{width:min(46rem,96%);top:2%;height:88%}
-  .hero .ornament--divider{margin:1rem auto}
+  .screen__decor .arch{width:min(46rem,96%);top:2%;height:88%}
+  .sprig--l{left:1%;top:10%;width:14rem;height:21rem}
+  .sprig--r{right:1%;top:8%;width:14rem;height:21rem}
+  .ribbon--foot{width:150%;left:-25%;height:13rem;bottom:-3%}
+
+  .home .ornament--divider{margin:1rem auto}
   .couple{margin-top:1rem}
   .couple__name{line-height:1.1}
   .couple__amp{margin:.5rem 0 .35rem}
   .hero__invite{margin-top:1.1rem}
   .hero__dates{margin-top:1.3rem}
 
-  .sprig--hero-l{left:1%;top:12%;width:14rem;height:21rem}
-  .sprig--hero-r{right:1%;top:10%;width:14rem;height:21rem}
-  .bloom--hero-1{left:14%;bottom:20%;width:3.6rem;height:3.6rem}
-  .bloom--hero-2{right:16%;top:18%;width:2.8rem;height:2.8rem}
-  .ribbon--hero{width:150%;left:-25%;height:13rem;bottom:-3%}
-
-  .event .sprig--a{left:1%;top:6%;width:14rem;height:21rem}
-  .event .sprig--b{right:1%;bottom:4%;width:14rem;height:21rem}
-
   /* Panel stays centred and card-shaped. Asymmetry comes from the
-     decorative layer around it — including any 3D PNGs added later —
-     so an empty half-screen never reads as a broken layout. */
+     decorative layer around it — including any 3D PNGs added later. */
   .event__panel{padding:5rem 4.5rem;max-width:46rem;margin-inline:auto}
+  .event .sprig--l{left:1%;top:6%}
+  .event .sprig--r{right:1%;top:8%}
 
-  .sprig--cl-l{left:2%;top:8%;width:13rem;height:20rem}
-  .sprig--cl-r{right:2%;bottom:6%;width:13rem;height:20rem}
-
-  .finale__frame{
-    padding:6rem 4rem;
-    max-width:52rem;
-    min-height:min(78vh,40rem);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .finale__frame .corner{width:5rem;height:5rem}
-  .finale__inner{width:100%}
-
-  .venues__grid{gap:2rem}
-  .venue-card{padding:3.2rem 1.8rem 2.8rem}
-
-  .tl{max-width:40rem}
+  .pins{max-width:46rem}
 }
 
 /* ---------- LARGE DESKTOP (≥1440px) ------------------------ */
 @media (min-width:1440px){
   :root{--shell:min(100% - 6rem, 76rem)}
   .couple__name{font-size:clamp(4rem,3.4vw + 2rem,6.2rem)}
-  .event .sprig--a,.event .sprig--b{width:17rem;height:25rem}
-  .sprig--hero-l,.sprig--hero-r{width:17rem;height:25rem}
+  .sprig--l,.sprig--r{width:17rem;height:25rem}
   .ribbon{height:15rem}
 }
 
 /* ---------- LANDSCAPE PHONE -------------------------------- */
-/* A phone turned sideways has plenty of width but almost no height, so the
-   vw-based display sizes have to be capped or a single name fills the screen.
-   Guarded by max-height so landscape tablets are not affected. */
+/* Plenty of width, almost no height, so the vw-based display sizes
+   have to be capped or one name fills the screen. Guarded by
+   max-height so landscape tablets are untouched. */
 @media (max-height:520px) and (orientation:landscape){
-  .intro__stage{flex-direction:row;gap:2rem;max-width:46rem;text-align:left}
-  .intro__copy{display:flex;flex-direction:column;align-items:flex-start}
-  .intro__div{margin-left:0}
-  .intro__title{font-size:1.15rem;letter-spacing:.26em}
-  .intro__names{font-size:1.9rem}
-  .envelope{width:14rem;flex:none}
-
-  .hero{min-height:auto;padding:3.5rem 0}
-  .hero__inner{max-width:42rem;margin-inline:auto}
-  .scroll-cue{display:none}
-  .evnav{bottom:.6rem}
+  .screen__body{padding:2.4rem 0 5.5rem;justify-content:flex-start}
+  .home,.locations{max-width:42rem;margin-inline:auto}
 
   .bismillah{font-size:1.45rem;line-height:1.7}
   .bismillah__latin{font-size:.86rem}
@@ -160,14 +127,15 @@
   .couple__amp{font-size:1.5rem;margin:.35rem 0 .25rem}
   .hero__invite{margin-top:.8rem}
   .hero__dates{margin-top:.9rem}
+  .home__countdown{margin-top:1.2rem}
+  .clock__num{font-size:2.1rem}
 
   .section-title{font-size:2rem}
   .event__title{font-size:2.5rem}
   .event__subtitle{font-size:1.3rem}
   .event__panel{padding:2.4rem 2rem;max-width:38rem;margin-inline:auto}
-  .clock__num{font-size:2.3rem}
-  .closing__line{font-size:1.5rem}
-  .finale__names{font-size:2.6rem}
+
+  .evnav{bottom:.5rem}
   .sprig,.arch{opacity:.22}
 }
 
@@ -178,27 +146,30 @@
   .btn-loc:hover svg{transform:none}
   .btn-loc.is-tapped{transform:scale(.96)}
   .btn-loc.is-tapped::before{transform:scaleY(1)}
-  .venue-card:hover{transform:none;box-shadow:none}
   /* lighter blur cost on phones */
   .evnav,.audio-btn{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 }
 
 /* ---------- PRINT ------------------------------------------ */
+/* Every screen prints, one after another, with the films dropped. */
 @media print{
-  .intro,.sweep,.evnav,.audio-btn,.grain,.dust-layer,
-  .scroll-cue,.cursor-glow,.ribbon,.sprig,.bloom{display:none!important}
+  .evnav,.audio-btn,.grain,.dust-layer,.cursor-glow,
+  .screen__film,.ribbon,.sprig,.bloom,.arch{display:none!important}
+
   body{background:#fff;color:#000}
-  .site{opacity:1!important}
+  .screen{
+    position:static!important;opacity:1!important;visibility:visible!important;
+    height:auto!important;overflow:visible!important;page-break-after:always;
+  }
+  .screen__body{opacity:1!important;padding:2rem 0!important;min-height:0}
+  .screen__decor{display:none}
   .event__bg{display:none}
-  .event{color:#000!important;page-break-inside:avoid}
-  .foil,.event--shalima .event__title{
+  .event,.pin{color:#000!important}
+  .pin__venue,.pin__event,.pin__meta{color:#000!important}
+  .foil,.event__title,.section-title{
     -webkit-text-fill-color:#7a5a1e!important;color:#7a5a1e!important;background:none!important;
   }
   /* the whole 3D layer is screen-only — on paper it just muddies the ink */
-  *{
-    filter:none!important;
-    box-shadow:none!important;
-    text-shadow:none!important;
-  }
-  .event__panel::before,.venue-card::after{display:none!important}
+  *{filter:none!important;box-shadow:none!important;text-shadow:none!important}
+  .event__panel::before{display:none!important}
 }
